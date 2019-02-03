@@ -118,6 +118,7 @@ if(isset($_POST["submit"]))
 							<ul class="links">
 								<li><a href="index.html">Home</a></li>
 								<li><a href="gettingstarted.html">Download wallet</a></li>
+								<li><a href="assets/Redstone_Whitepaper.pdf">Download Whitepaper</a></li>
 								<li><a href="http://test.blockexplorer.redstoneplatform.com/block-explorer">Block Explorer (Testnet)</a></li>
 							</ul>
 							<a href="#" class="close">Close</a>
