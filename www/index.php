@@ -195,29 +195,25 @@ if(isset($_POST["submit"]))
 							<h2 class="major">Get in touch</h2>
 							<p>If you want to keep up to date with all things <strong>Redstone</strong> then enter your details below and we will add you to our mailing list or sign up for one of our social media channels</p>
 							<form method="post">
-     <h3 align="center">Contact Form</h3>
-     <br />
-     <?php echo $error; ?>
-     <div class="form-group">
-      <label>Enter Name</label>
-      <input type="text" name="name" placeholder="Enter Name" class="form-control" value="<?php echo $name; ?>" />
-     </div>
-     <div class="form-group">
-      <label>Enter Email</label>
-      <input type="text" name="email" class="form-control" placeholder="Enter Email" value="<?php echo $email; ?>" />
-     </div>
-     <div class="form-group">
-      <label>Enter Subject</label>
-      <input type="text" name="subject" class="form-control" placeholder="Enter Subject" value="<?php echo $subject; ?>" />
-     </div>
-     <div class="form-group">
-      <label>Enter Message</label>
-      <textarea name="message" class="form-control" placeholder="Enter Message"><?php echo $message; ?></textarea>
-     </div>
-     <div class="form-group" align="center">
-      <input type="submit" name="submit" class="btn btn-info" value="Submit" />
-     </div>
-    </form>
+						    <h3 align="center">Contact Form</h3>
+     						<br />
+     						<?php echo $error; ?>
+     						<div class="field">
+     						 <label for="name">Name</label>
+    						  <input type="text" name="name" placeholder="Name" class="form-control" value="<?php echo $name; ?>" />
+    						 </div>
+    						 <div class="field">
+    						  <label for="email">Email</label>
+      						  <input type="email" name="email" id="email" class="form-control" placeholder="Email" value="<?php echo $email; ?>" />
+    						 </div>
+							<div class="field">
+							<label for="message"></label>
+							<input type="message" name="message" id="message" rows="4" class="form-control" placeholder="Comments" value="<?php echo $subject; ?>" />
+							</div>
+							<div class="actions">
+							<input type="submit" name="submit" class="btn btn-info" value="Send" />
+							</div>
+							</form>
 							<ul class="contact">
 								<li class="fa-github" style='font-size:20px'> <a href="https://github.com/redstoneplatform">https://github.com/redstoneplatform</a></li>
 								<li class="fa-telegram" style='font-size:20px'><a href="https://t.me/redstoneplatform">t.me/redstoneplatform</a></li>
