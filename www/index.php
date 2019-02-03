@@ -41,14 +41,14 @@ if(isset($_POST["submit"]))
    $error .= '<p><label class="text-danger">Invalid email format</label></p>';
   }
  }
- if(empty($_POST["subject"]))
- {
-  $error .= '<p><label class="text-danger">Subject is required</label></p>';
- }
- else
- {
-  $subject = clean_text($_POST["subject"]);
- }
+ //if(empty($_POST["subject"]))
+ //{
+ // $error .= '<p><label class="text-danger">Subject is required</label></p>';
+ //}
+ //else
+ //{
+ // $subject = clean_text($_POST["subject"]);
+ //}
  if(empty($_POST["message"]))
  {
   $error .= '<p><label class="text-danger">Message is required</label></p>';
@@ -208,7 +208,7 @@ if(isset($_POST["submit"]))
     						 </div>
 							<div class="field">
 							<label for="message"></label>
-							<textarea name="message" id="message" rows="4" class="form-control" placeholder="Comments" value="<?php echo $message; ?>" /></textarea>
+							<textarea name="message" id="message" rows="4" class="form-control" placeholder="message" value="<?php echo $message; ?>" /></textarea>
 							</div>
 							<div class="actions">
 							<input type="submit" name="submit" class="btn btn-info" value="Send" />
