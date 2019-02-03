@@ -208,12 +208,13 @@ if(isset($_POST["submit"]))
     						 </div>
 							<div class="field">
 							<label for="message"></label>
-							<input type="message" name="message" id="message" rows="4" class="form-control" placeholder="Comments" value="<?php echo $subject; ?>" />
+							<textarea name="message" id="message" rows="4" class="form-control" placeholder="Comments" value="<?php echo $message; ?>" /></textarea>
 							</div>
 							<div class="actions">
 							<input type="submit" name="submit" class="btn btn-info" value="Send" />
 							</div>
 							</form>
+							
 							<ul class="contact">
 								<li class="fa-github" style='font-size:20px'> <a href="https://github.com/redstoneplatform">https://github.com/redstoneplatform</a></li>
 								<li class="fa-telegram" style='font-size:20px'><a href="https://t.me/redstoneplatform">t.me/redstoneplatform</a></li>
