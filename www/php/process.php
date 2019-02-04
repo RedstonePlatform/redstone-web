@@ -51,7 +51,7 @@ if(isset($_POST["submit"]))
 
  if($error == '')
  {
-  $file_open = fopen("contact_data.csv", "w+");//"a");
+  $file_open = fopen("contact_data.csv", "a") or die('fopen failed');;
   $no_rows = count(file("contact_data.csv"));
   if($no_rows > 1)
   {
@@ -63,6 +63,7 @@ if(isset($_POST["submit"]))
    'email'  => $email,
    'message' => $message
   );
+  fwrite($fp, "$name\t$email\t$message\r\n") or die('fwrite failed');
   fputcsv($file_open, $form_data);
   $error = '<label class="text-success">Thank you for contacting us</label>';
   $name = '';
