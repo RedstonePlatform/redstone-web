@@ -4,7 +4,6 @@
 $error = '';
 $name = '';
 $email = '';
-$subject = '';
 $message = '';
 
 function clean_text($string)
@@ -52,8 +51,8 @@ if(isset($_POST["submit"]))
 
  if($error == '')
  {
-  $file_open = fopen("contact_data.csv", "a");
-  $no_rows = count(file("contact_data.csv"));
+  $file_open = fopen("data/contact_data.csv", "w+");//"a");
+  $no_rows = count(file("data/contact_data.csv"));
   if($no_rows > 1)
   {
    $no_rows = ($no_rows - 1) + 1;
@@ -62,19 +61,17 @@ if(isset($_POST["submit"]))
    'sr_no'  => $no_rows,
    'name'  => $name,
    'email'  => $email,
-   'subject' => $subject,
    'message' => $message
   );
   fputcsv($file_open, $form_data);
   $error = '<label class="text-success">Thank you for contacting us</label>';
   $name = '';
   $email = '';
-  $subject = '';
   $message = '';
  }
 }
-
 ?>
+
 <!DOCTYPE HTML>
 <!--
 	Solid State by HTML5 UP
@@ -86,8 +83,8 @@ if(isset($_POST["submit"]))
 		<title>Redstone Platform</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	</head>
 	<body class="is-preload">
@@ -121,12 +118,13 @@ if(isset($_POST["submit"]))
 					<section id="banner">
 						<div class="inner">
 							<div class="logo"><span class="icon fa-diamond" style='font-size:48px;color:red'></span></div>
-							<h2>Thanks for contacting us.</h2>
-							<p><?php echo $error; ?></p>
+							<h2>Result:<?php echo $error; ?></h2>
 					</div>
 
 					</section>
-
+				<!-- Wrapper -->
+				<section id="wrapper">
+				</section>
 				<!-- Footer -->
 					<section id="footer">
 						<div class="inner">
