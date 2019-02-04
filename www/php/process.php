@@ -1,5 +1,5 @@
 <?php
-//index.php
+//process.php
 
 $error = '';
 $name = '';
@@ -41,14 +41,6 @@ if(isset($_POST["submit"]))
    $error .= '<p><label class="text-danger">Invalid email format</label></p>';
   }
  }
- //if(empty($_POST["subject"]))
- //{
- // $error .= '<p><label class="text-danger">Subject is required</label></p>';
- //}
- //else
- //{
- // $subject = clean_text($_POST["subject"]);
- //}
  if(empty($_POST["message"]))
  {
   $error .= '<p><label class="text-danger">Message is required</label></p>';
@@ -129,93 +121,17 @@ if(isset($_POST["submit"]))
 					<section id="banner">
 						<div class="inner">
 							<div class="logo"><span class="icon fa-diamond" style='font-size:48px;color:red'></span></div>
-							<h2>This is Redstone</h2>
-							<p><strong>Redstone</strong> an economy to incentivise the development and operation of valuable dApps & Services.</p>
+							<h2>Thanks for contacting us.</h2>
+							<p><?php echo $error; ?></p>
 					</div>
 
 					</section>
 
-				<!-- Wrapper -->
-					<section id="wrapper">
-
-						<!-- One -->
-							<section id="one" class="wrapper spotlight style1">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">What is Redstone</h2>
-											<p><strong>Redstone</strong> provides an incentive for the community to develop and host dApps, web services, games or any software as a service (SaaS). It allows developers to crowdfund & monetise their efforts whilst providing the mechanic for the end users to make micropayments to allow them to use the dApps or web services. A marketplace for discovery of dApps, web services & will also allow for crowdsourcing software development.</p>
-									</div>
-								</div>
-							</section>
-
-						<!-- Two -->
-							<section id="two" class="wrapper alt spotlight style2">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Who's Redstone for?</h2>
-										<p><strong>Redstone</strong> is for independent full or part time developers looking to monetise their software development efforts. Operating a service node provides an income, whilst providing the underlying infrastructure & security for Redstone. Investors can earn a passive income for securing the underlying blockchain.</p>
-									</div>
-								</div>
-							</section>
-
-						<!-- Three -->
-							<section id="three" class="wrapper spotlight style3">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Marketplace</h2>
-										<p><strong>Redstone</strong> we plan to build a marketplace that will enable people to utilise community created dApps & web services. Available on the platform will be a section to enable developers to crowdfund for new dApps. We are actively researching crowdsourcing the development via microtasks / micropayments. We also want to encourage the community to operate the dApps & services by running them along side their masternodes for which they will get a share of the block rewards.</p>
-										<a href="#" class="special">Learn more</a>
-									</div>
-								</div>
-							</section>
-
-						<!-- Four -->
-						<section id="two" class="wrapper alt spotlight style2">
-							<div class="inner">
-								<div class="content">
-									<h2 class="major">Key Features</h2>
-									<p>Some of the key features of the <strong>Redstone</strong> platform:</p>
-									<ul class="alt">
-										<li class="icon fa-map-marker"  style='font-size:20px'> Decentralised & Distributed</li>
-										<li class="icon fa-money" style='font-size:20px'> Proof of Stake</li>
-										<li class="icon fa-gear" style='font-size:20px'> Service Nodes</li>
-										<li class="icon fa-code" style='font-size:20px'> C# Smart Contracts</li>
-										<li class="icon fa-signal" style='font-size:20px'> Side chains</li>
-										<li class="icon fa-bolt" style='font-size:20px'> Oracles</li>
-									</ul>
-								</div>
-							</div>
-						</section>
-					</section>
 				<!-- Footer -->
 					<section id="footer">
 						<div class="inner">
 							<h2 class="major">Get in touch</h2>
 							<p>If you want to keep up to date with all things <strong>Redstone</strong> then enter your details below and we will add you to our mailing list or sign up for one of our social media channels</p>
-							<form method="post">
-						    <h3 align="center">Contact Form</h3>
-     						<br />
-     						<?php echo $error; ?>
-     						<div class="field">
-     						 <label for="name">Name</label>
-    						  <input type="text" name="name" placeholder="Name" class="form-control" value="<?php echo $name; ?>" />
-    						 </div>
-    						 <div class="field">
-    						  <label for="email">Email</label>
-      						  <input type="email" name="email" id="email" class="form-control" placeholder="Email" value="<?php echo $email; ?>" />
-    						 </div>
-							<div class="field">
-							<label for="message"></label>
-							<textarea name="message" id="message" rows="4" class="form-control" placeholder="message" value="<?php echo $message; ?>" /></textarea>
-							</div>
-							<div class="actions">
-							<input type="submit" name="submit" class="btn btn-info" value="Send" />
-							</div>
-							</form>
-							
 							<ul class="contact">
 								<li class="fa-github" style='font-size:20px'> <a href="https://github.com/redstoneplatform">https://github.com/redstoneplatform</a></li>
 								<li class="fa-telegram" style='font-size:20px'><a href="https://t.me/redstoneplatform">t.me/redstoneplatform</a></li>
