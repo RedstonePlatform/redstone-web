@@ -63,6 +63,11 @@ if(isset($_POST["submit"]))
    'email'  => $email,
    'message' => $message
   );
+  echo $form_data;
+  echo $name;
+  echo $email;
+  echo $message;
+  
   fwrite($fp, "$name\t$email\t$message\r\n") or die('fwrite failed');
   fputcsv($file_open, $form_data);
   $error = '<label class="text-success">Thank you for contacting us</label>';
