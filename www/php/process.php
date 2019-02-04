@@ -14,8 +14,8 @@ function clean_text($string)
  return $string;
 }
 
-if(isset($_POST["submit"]))
-{
+//if(isset($_POST["submit"]))
+//{
  if(empty($_POST["name"]))
  {
   $error .= '<p><label class="text-danger">Please Enter your Name</label></p>';
@@ -75,9 +75,7 @@ if(isset($_POST["submit"]))
   $email = '';
   $message = '';
  }
-}
 ?>
-
 <!DOCTYPE HTML>
 <!--
 	Solid State by HTML5 UP
