@@ -47,10 +47,6 @@ function clean_text($string)
   $message = clean_text($_POST["message"]);
  }
 
- $file_open = fopen("contact_data.csv", "a") or die('fopen failed');;
- fwrite($file_open, "$name\t$email\t$message\r\n") or die('fwrite failed');
- fclose($file_open ); //Finally close our .txt
-
  if($error == '')
  {
   $file_open = fopen("contact_data.csv", "a") or die('fopen failed');;
@@ -67,6 +63,7 @@ function clean_text($string)
   );
 
   fputcsv($file_open, $form_data) or die('fputcsv failed;');
+  fclose($file_open );
 
   $error = '<label class="text-success">Thank you for contacting us</label>';
   $name = '';
@@ -120,7 +117,8 @@ function clean_text($string)
 					<section id="banner">
 						<div class="inner">
 							<div class="logo"><span class="icon fa-diamond" style='font-size:48px;color:red'></span></div>
-							<h2>Result:<?php echo $error; ?></h2>
+							<h2><?php echo $error; ?></h2>
+							<a href="../index.html" class="special">Home</a>
 					</div>
 
 					</section>
