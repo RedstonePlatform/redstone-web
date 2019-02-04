@@ -51,8 +51,8 @@ if(isset($_POST["submit"]))
 
  if($error == '')
  {
-  $file_open = fopen("data/contact_data.csv", "w+");//"a");
-  $no_rows = count(file("data/contact_data.csv"));
+  $file_open = fopen("contact_data.csv", "w+");//"a");
+  $no_rows = count(file("contact_data.csv"));
   if($no_rows > 1)
   {
    $no_rows = ($no_rows - 1) + 1;
