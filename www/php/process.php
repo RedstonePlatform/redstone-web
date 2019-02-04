@@ -105,9 +105,9 @@ if(isset($_POST["submit"]))
 						<div class="inner">
 							<h2>Menu</h2>
 							<ul class="links">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="gettingstarted.html">Download wallet</a></li>
-								<li><a href="assets/Redstone_Whitepaper.pdf">Download Whitepaper</a></li>
+								<li><a href="../index.html">Home</a></li>
+								<li><a href="../gettingstarted.html">Download wallet</a></li>
+								<li><a href="../assets/Redstone_Whitepaper.pdf">Download Whitepaper</a></li>
 								<li><a href="http://test.blockexplorer.redstoneplatform.com/block-explorer">Block Explorer (Testnet)</a></li>
 							</ul>
 							<a href="#" class="close">Close</a>
@@ -146,12 +146,12 @@ if(isset($_POST["submit"]))
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
 
 	</body>
 </html>
