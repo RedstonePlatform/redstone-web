@@ -14,8 +14,6 @@ function clean_text($string)
  return $string;
 }
 
-//if(isset($_POST["submit"]))
-//{
  if(empty($_POST["name"]))
  {
   $error .= '<p><label class="text-danger">Please Enter your Name</label></p>';
@@ -68,8 +66,8 @@ function clean_text($string)
   echo $email;
   echo $message;
   
-  fwrite($fp, "$name\t$email\t$message\r\n") or die('fwrite failed');
-  fputcsv($file_open, $form_data);
+  fwrite($file_open, "$name\t$email\t$message\r\n") or die('fwrite failed');
+  fputcsv($file_open, $form_data) or die('fputcsv failed;');
   $error = '<label class="text-success">Thank you for contacting us</label>';
   $name = '';
   $email = '';
