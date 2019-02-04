@@ -49,7 +49,7 @@ function clean_text($string)
 
  $file_open = fopen("contact_data.csv", "a") or die('fopen failed');;
  fwrite($file_open, "$name\t$email\t$message\r\n") or die('fwrite failed');
-
+ fclose($file_open ); //Finally close our .txt
 
  if($error == '')
  {
@@ -65,7 +65,7 @@ function clean_text($string)
    'email'  => $email,
    'message' => $message
   );
-  
+
   fputcsv($file_open, $form_data) or die('fputcsv failed;');
 
   $error = '<label class="text-success">Thank you for contacting us</label>';
