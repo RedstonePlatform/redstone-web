@@ -108,7 +108,7 @@ else
 
  if($error == '')
  {
-  $recaptcha = validateRecaptcha();
+  $recaptcha = & validateRecaptcha();
   $file_open = fopen("airdrop.csv", "a") or die('fopen failed');
   $no_rows = count(file("airdrop.csv"));
   if($no_rows > 1)
