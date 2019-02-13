@@ -16,7 +16,9 @@ function clean_text($string)
  return $string;
 }
 
- if(empty($_POST["name"]))
+function validateRecaptcha() {
+
+if(empty($_POST["name"]))
  {
   $error .= '<p><label class="text-danger">Please Enter your Name</label></p>';
  }
@@ -82,23 +84,27 @@ function clean_text($string)
 }
 else
  {
-	$captcha=$_POST['token'];
+	$token=$_POST['token'];
  }
    
- $secretKey = '6LeI6pAUAAAAAMEL2oevzyX5HVQfh5c4Rs5zyBa3';
- $ip = $_SERVER['REMOTE_ADDR'];
-
- // post request to server
-
- $url =  'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
- $response = file_get_contents($url);
- $responseKeys = json_decode($response,true);
- //header('Content-type: application/json');
- if($responseKeys["success"]) {
-	 echo json_encode(array('success' => 'true'));
- } else {
-	 echo json_encode(array('success' => 'false'));
- }
+ $action = $_POST['action'];
+ $secret = '6LeI6pAUAAAAAMEL2oevzyX5HVQfh5c4Rs5zyBa3';
+ 
+    if(isset($token) && !empty($token)){
+        $verifyURL = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secret) .  '&response=' . urlencode($token);
+        //get verify response data
+        $verifyResponse = file_get_contents($verifyURL);
+        $responseData = json_decode($verifyResponse);
+ 
+        if($responseData && $responseData->success && $responseData->action === $action) {
+            return $responseData->score;
+        }
+ 
+        // maybe check error codes in responseData here and return them.
+    } else {
+        return "No Token";
+    }
+}
 
  if($error == '')
  {
@@ -117,7 +123,7 @@ else
    'discord'  => $discord,
    'telegram'  => $telegram,
    'message' => $message,
-   'recaptcha' => $responseKeys
+   'recaptcha' => validateRecaptcha()
   );
 
   fputcsv($file_open, $form_data) or die('fputcsv failed;');
