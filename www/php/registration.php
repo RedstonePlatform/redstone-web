@@ -90,7 +90,7 @@ else
  $action = $_POST['action'];
  $secret = '6LeI6pAUAAAAAMEL2oevzyX5HVQfh5c4Rs5zyBa3';
  
-    if(isset($token) && !empty($token)){
+    if(!empty($token)){
         $verifyURL = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secret) .  '&response=' . urlencode($token);
         //get verify response data
         $verifyResponse = file_get_contents($verifyURL);
