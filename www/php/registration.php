@@ -238,7 +238,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<script src="../assets/js/breakpoints.min.js"></script>
 			<script src="../assets/js/util.js"></script>
 			<script src="../assets/js/main.js"></script>
-			<script src="https://www.google.com/recaptcha/api.js?render=<?php echo RECAPTCHA_SITE_KEY; ?>"></script>
+			<script src="https://www.google.com/recaptcha/api.js?render=6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP"></script>
 			<script>
  				grecaptcha.ready(function() 
 				{
