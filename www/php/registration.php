@@ -152,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   fputcsv($file_open, $form_data) or die('fputcsv failed;');
   fclose($file_open );
 
-  $error = '<label class="text-success">Thank you for contacting us</label>';
+  $error = '<label class="text-success">Thank you for registering with Redstone</label>';
   $name = '';
   $email = '';
   $redstone_add = '';
@@ -168,8 +168,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		<title>Redstone Platform</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	</head>
 	<body class="is-preload">
@@ -242,7 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<script>
  				grecaptcha.ready(function() 
 				{
- 				grecaptcha.execute('<?php echo RECAPTCHA_SITE_KEY; ?>', {action: 'homepage'}).then(function(token) 
+ 				grecaptcha.execute('6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP', {action: 'homepage'}).then(function(token) 
 					{  
   					document.getElementById('g-recaptcha-response').value=token;
  					});
