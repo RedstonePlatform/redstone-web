@@ -1,9 +1,17 @@
 <?php
-//process.php
+## reCAPTCHA V3 key define ##
+#client-side
+define('RECAPTCHA_SITE_KEY','6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP'); // define here reCAPTCHA_site_key
+#server-side
+define('RECAPTCHA_SECRET_KEY','6LeI6pAUAAAAAMEL2oevzyX5HVQfh5c4Rs5zyBa3'); // define here reCAPTCHA_secret_key
 
 $error = '';
 $name = '';
 $email = '';
+$redstone_add = '';
+$github = '';
+$discord = '';
+$telegram = '';
 $message = '';
 
 function clean_text($string)
@@ -38,19 +46,93 @@ function clean_text($string)
    $error .= '<p><label class="text-danger">Invalid email format</label></p>';
   }
  }
- if(empty($_POST["message"]))
+ if(empty($_POST["redstone_add"]))
  {
-  $error .= '<p><label class="text-danger">Message is required</label></p>';
+  $error .= '<p><label class="text-danger">Redstone Address is required</label></p>';
  }
  else
  {
-  $message = clean_text($_POST["message"]);
+  $redstone_add = clean_text($_POST["redstone_add"]);
  }
+
+ if(empty($_POST["github"]))
+ {
+  $error .= '<p><label class="text-danger">Github ID is required</label></p>';
+ }
+ else
+ {
+  $github = clean_text($_POST["github"]);
+ }
+
+ if(empty($_POST["discord"]))
+ {
+  $error .= '<p><label class="text-danger">Discord ID is required</label></p>';
+ }
+ else
+ {
+  $discord = clean_text($_POST["discord"]);
+ }
+
+ if(empty($_POST["telegram"]))
+ {
+  $error .= '<p><label class="text-danger">Telegram ID is required</label></p>';
+ }
+ else
+ {
+  $telegram = clean_text($_POST["telegram"]);
+ }
+
+
+class Captcha{
+    public function getCaptcha($SecretKey){
+        $data = array(
+   'secret' => RECAPTCHA_SECRET_KEY,
+   'response' => $SecretKey
+  );   
+  $verify = curl_init();
+  curl_setopt($verify, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify"); 
+  curl_setopt($verify, CURLOPT_POST, true);
+  curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query($data));
+  curl_setopt($verify, CURLOPT_SSL_VERIFYPEER, false);
+  curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
+  $response_data = curl_exec($verify);
+  $response_data = json_decode($response_data);
+  curl_close($verify);  
+  //echo "<pre>"; print_r($response_data); echo "</pre>";
+  return $response_data;
+    }
+}
+///////////////////////////// OR /////////////////////////////
+/*
+class Captcha{
+    public function getCaptcha($SecretKey){
+        $Resposta=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".RECAPTCHA_SECRET_KEY."&response={$SecretKey}");
+        $Retorno=json_decode($Resposta);
+        return $Retorno;
+    }
+}
+*/
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
+ 
+ //echo "<pre>"; print_r($_REQUEST); echo "</pre>";
+  
+ $ObjCaptcha = new Captcha();
+ $Retorno = $ObjCaptcha->getCaptcha($_POST['g-recaptcha-response']); 
+ 
+ //echo "<pre>"; print_r($Retorno); echo "</pre>";
+ 
+ if($Retorno->success){
+  echo '<p style="color: #0a860a;">CAPTCHA was completed successfully!</p>';
+ }else{   
+  echo '<p style="color: #f80808;">reCAPTCHA error: Check to make sure your keys match the registered domain and are in the correct locations.<br> You may also want to doublecheck your code for typos or syntax errors.</p>';
+ }
+}
 
  if($error == '')
  {
-  $file_open = fopen("contact_data.csv", "a") or die('fopen failed');;
-  $no_rows = count(file("contact_data.csv"));
+  $file_open = fopen("airdrop.csv", "a") or die('fopen failed');;
+  $no_rows = count(file("airdrop.csv"));
   if($no_rows > 1)
   {
    $no_rows = ($no_rows - 1) + 1;
@@ -59,7 +141,12 @@ function clean_text($string)
    'sr_no'  => $no_rows,
    'name'  => $name,
    'email'  => $email,
-   'message' => $message
+   'redstone_add'  => $redstone_add,
+   'github'  => $github,
+   'discord'  => $discord,
+   'telegram'  => $telegram,
+   'message' => $message,
+   'recaptcha' => $response_data
   );
 
   fputcsv($file_open, $form_data) or die('fputcsv failed;');
@@ -68,6 +155,10 @@ function clean_text($string)
   $error = '<label class="text-success">Thank you for contacting us</label>';
   $name = '';
   $email = '';
+  $redstone_add = '';
+  $github = '';
+  $discord = '';
+  $telegram = '';
   $message = '';
  }
 ?>
@@ -147,6 +238,17 @@ function clean_text($string)
 			<script src="../assets/js/breakpoints.min.js"></script>
 			<script src="../assets/js/util.js"></script>
 			<script src="../assets/js/main.js"></script>
-
+			<script src="https://www.google.com/recaptcha/api.js?render=<?php echo RECAPTCHA_SITE_KEY; ?>"></script>
+			<script>
+ 				grecaptcha.ready(function() 
+				{
+ 				grecaptcha.execute('<?php echo RECAPTCHA_SITE_KEY; ?>', {action: 'homepage'}).then(function(token) 
+					{  
+  					document.getElementById('g-recaptcha-response').value=token;
+ 					});
+				});
+			</script>
 	</body>
 </html>
+
+
