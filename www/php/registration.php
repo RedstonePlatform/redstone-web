@@ -78,15 +78,7 @@ if(empty($_POST["name"]))
   $telegram = clean_text($_POST["telegram"]);
  }
 
- if(empty($_POST['token']))
- {
-	$error .= '<p><label class="text-danger">Captcha Error</label></p>';
-}
-else
- {
-	$token=$_POST['token'];
- }
-   
+ $token=$_POST['token'];
  $action = $_POST['action'];
  $secret = '6LeI6pAUAAAAAMEL2oevzyX5HVQfh5c4Rs5zyBa3';
  
