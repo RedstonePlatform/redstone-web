@@ -82,52 +82,29 @@ function clean_text($string)
   $telegram = clean_text($_POST["telegram"]);
  }
 
-
-class Captcha{
-    public function getCaptcha($SecretKey){
-        $data = array(
-   'secret' => RECAPTCHA_SECRET_KEY,
-   'response' => $SecretKey
-  );   
-  $verify = curl_init();
-  curl_setopt($verify, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify"); 
-  curl_setopt($verify, CURLOPT_POST, true);
-  curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query($data));
-  curl_setopt($verify, CURLOPT_SSL_VERIFYPEER, false);
-  curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
-  $response_data = curl_exec($verify);
-  $response_data = json_decode($response_data);
-  curl_close($verify);  
-  //echo "<pre>"; print_r($response_data); echo "</pre>";
-  return $response_data;
-    }
+ if(empty($_POST['token']))
+ {
+	$error .= '<p><label class="text-danger">Captcha Error</label></p>';
 }
-///////////////////////////// OR /////////////////////////////
-/*
-class Captcha{
-    public function getCaptcha($SecretKey){
-        $Resposta=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".RECAPTCHA_SECRET_KEY."&response={$SecretKey}");
-        $Retorno=json_decode($Resposta);
-        return $Retorno;
-    }
-}
-*/
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
- 
- //echo "<pre>"; print_r($_REQUEST); echo "</pre>";
-  
- $ObjCaptcha = new Captcha();
- $Retorno = $ObjCaptcha->getCaptcha($_POST['g-recaptcha-response']); 
- 
- //echo "<pre>"; print_r($Retorno); echo "</pre>";
- 
- if($Retorno->success){
-  echo '<p style="color: #0a860a;">CAPTCHA was completed successfully!</p>';
- }else{   
-  echo '<p style="color: #f80808;">reCAPTCHA error: Check to make sure your keys match the registered domain and are in the correct locations.<br> You may also want to doublecheck your code for typos or syntax errors.</p>';
+else
+ {
+	$captcha=$_POST['token'];
  }
-}
+   
+ $secretKey = RECAPTCHA_SECRET_KEY;
+ $ip = $_SERVER['REMOTE_ADDR'];
+
+ // post request to server
+
+ $url =  'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
+ $response = file_get_contents($url);
+ $responseKeys = json_decode($response,true);
+ header('Content-type: application/json');
+ if($responseKeys["success"]) {
+		 echo json_encode(array('success' => 'true'));
+ } else {
+		 echo json_encode(array('success' => 'false'));
+ }
 
  if($error == '')
  {
@@ -146,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    'discord'  => $discord,
    'telegram'  => $telegram,
    'message' => $message,
-   'recaptcha' => $response_data
+   'recaptcha' => $responseKeys
   );
 
   fputcsv($file_open, $form_data) or die('fputcsv failed;');
@@ -171,6 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		<link rel="stylesheet" href="../../assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+		<script src="https://www.google.com/recaptcha/api.js?render=<?php echo RECAPTCHA_SITE_KEY; ?>"></script>
 	</head>
 	<body class="is-preload">
 
@@ -238,13 +216,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<script src="../assets/js/breakpoints.min.js"></script>
 			<script src="../assets/js/util.js"></script>
 			<script src="../assets/js/main.js"></script>
-			<script src="https://www.google.com/recaptcha/api.js?render=<?php echo RECAPTCHA_SITE_KEY; ?>"></script>
-			<script>
-			grecaptcha.ready(function() {
-			 grecaptcha.execute('<?php echo RECAPTCHA_SITE_KEY; ?>', {action: 'homepage'}).then(function(token) {  
-			 document.getElementById('g-recaptcha-response').value=token;
-			 });
-			});
 			</script>
 	</body>
 </html>
