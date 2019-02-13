@@ -108,7 +108,8 @@ else
 
  if($error == '')
  {
-  $file_open = fopen("airdrop.csv", "a") or die('fopen failed');;
+  $recaptcha = validateRecaptcha();
+  $file_open = fopen("airdrop.csv", "a") or die('fopen failed');
   $no_rows = count(file("airdrop.csv"));
   if($no_rows > 1)
   {
@@ -123,7 +124,7 @@ else
    'discord'  => $discord,
    'telegram'  => $telegram,
    'message' => $message,
-   'recaptcha' => validateRecaptcha()
+   'recaptcha' => $recaptcha
   );
 
   fputcsv($file_open, $form_data) or die('fputcsv failed;');
