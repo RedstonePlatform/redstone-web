@@ -1,10 +1,4 @@
 <?php
-## reCAPTCHA V3 key define ##
-#client-side
-define('RECAPTCHA_SITE_KEY','6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP'); // define here reCAPTCHA_site_key
-#server-side
-define('RECAPTCHA_SECRET_KEY','6LeI6pAUAAAAAMEL2oevzyX5HVQfh5c4Rs5zyBa3'); // define here reCAPTCHA_secret_key
-
 $error = '';
 $name = '';
 $email = '';
@@ -91,7 +85,7 @@ else
 	$captcha=$_POST['token'];
  }
    
- $secretKey = RECAPTCHA_SECRET_KEY;
+ $secretKey = '6LeI6pAUAAAAAMEL2oevzyX5HVQfh5c4Rs5zyBa3';
  $ip = $_SERVER['REMOTE_ADDR'];
 
  // post request to server
@@ -99,11 +93,11 @@ else
  $url =  'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
  $response = file_get_contents($url);
  $responseKeys = json_decode($response,true);
- header('Content-type: application/json');
+ //header('Content-type: application/json');
  if($responseKeys["success"]) {
-		 echo json_encode(array('success' => 'true'));
+	 echo json_encode(array('success' => 'true'));
  } else {
-		 echo json_encode(array('success' => 'false'));
+	 echo json_encode(array('success' => 'false'));
  }
 
  if($error == '')
