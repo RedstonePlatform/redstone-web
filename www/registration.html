@@ -64,6 +64,9 @@
 							<p>To register for the <strong>Redstone</strong> airdrop, please provide the following details.</p>
 							
 							<form method="post" action="/php/registration.php">
+								<div class="g-recaptcha" data-sitekey="6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP"></div>
+								<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+								<input type="hidden" name="action" value="validate_captcha">
 								<div class="fields">
 									<div class="field">
 										<label for="name">Name</label>
@@ -94,7 +97,6 @@
 										<textarea name="message" id="message" rows="4"></textarea>
 									</div>
 								</div>
-								<div class="g-recaptcha" data-sitekey="6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP"></div>
 								<ul class="actions">				
 									<li><input type="submit" value="Register" /></li>
 								</ul>
