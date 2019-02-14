@@ -16,7 +16,6 @@ function clean_text($string)
  return $string;
 }
 
-if(isset($_POST['submit']) && !empty($_POST['submit'])):
     if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])):
         //your site secret key
         $secret = '6LeI6pAUAAAAAMEL2oevzyX5HVQfh5c4Rs5zyBa3';
@@ -26,84 +25,53 @@ if(isset($_POST['submit']) && !empty($_POST['submit'])):
         if($responseData->success):
 
 			if(empty($_POST["name"]))
-			{
-			 $error .= '<p><label class="text-danger">Please Enter your Name</label></p>';
-			}
+			{$error .= '<p><label class="text-danger">Please Enter your Name</label></p>';}
 			else
 			{
-			 $name = clean_text($_POST["name"]);
-			 if(!preg_match("/^[a-zA-Z ]*$/",$name))
-			 {
-			  $error .= '<p><label class="text-danger">Only letters and white space allowed</label></p>';
-			 }
+				$name = clean_text($_POST["name"]);
+				if(!preg_match("/^[a-zA-Z ]*$/",$name))
+					{$error .= '<p><label class="text-danger">Only letters and white space allowed</label></p>';}
 			}
 			if(empty($_POST["email"]))
-			{
-			 $error .= '<p><label class="text-danger">Please Enter your Email</label></p>';
-			}
-			else
-			{
-			 $email = clean_text($_POST["email"]);
-			 if(!filter_var($email, FILTER_VALIDATE_EMAIL))
-			 {
-			  $error .= '<p><label class="text-danger">Invalid email format</label></p>';
-			 }
-			}
+			{$error .= '<p><label class="text-danger">Please Enter your Email</label></p>';}
+				else
+				{
+				$email = clean_text($_POST["email"]);
+				 if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+				 {$error .= '<p><label class="text-danger">Invalid email format</label></p>';}
+				}
 			if(empty($_POST["redstone_add"]))
-			{
-			 $error .= '<p><label class="text-danger">Redstone Address is required</label></p>';
-			}
+				{$error .= '<p><label class="text-danger">Redstone Address is required</label></p>';}
 			else
-			{
-			 $redstone_add = clean_text($_POST["redstone_add"]);
-			}
-		   
+				{$redstone_add = clean_text($_POST["redstone_add"]);} 
 			if(empty($_POST["github"]))
-			{
-			 $error .= '<p><label class="text-danger">Github ID is required</label></p>';
-			}
+				{$error .= '<p><label class="text-danger">Github ID is required</label></p>';}
 			else
-			{
-			 $github = clean_text($_POST["github"]);
-			}
-		   
-			if(empty($_POST["discord"]))
-			{
-			 $error .= '<p><label class="text-danger">Discord ID is required</label></p>';
-			}
-			else
-			{
-			 $discord = clean_text($_POST["discord"]);
-			}
+				{$github = clean_text($_POST["github"]);}
+		   	if(empty($_POST["discord"]))
+				{$error .= '<p><label class="text-danger">Discord ID is required</label></p>';}
+			else 
+				{$discord = clean_text($_POST["discord"]);}
 		   
 			if(empty($_POST["telegram"]))
-			{
-			 $error .= '<p><label class="text-danger">Telegram ID is required</label></p>';
-			}
+				{$error .= '<p><label class="text-danger">Telegram ID is required</label></p>';}
 			else
-			{
-			 $telegram = clean_text($_POST["telegram"]);
-			}
-
+				{$telegram = clean_text($_POST["telegram"]);}
 			if($error == '')
-
-			 $file_open = fopen("airdrop.csv", "a") or die('fopen failed');
-			 $no_rows = count(file("airdrop.csv"));
-			 if($no_rows > 1)
-			 {
-			  $no_rows = ($no_rows - 1) + 1;
-			 }
-			 $form_data = array(
-			  'sr_no'  => $no_rows,
-			  'name'  => $name,
-			  'email'  => $email,
-			  'redstone_add'  => $redstone_add,
-			  'github'  => $github,
-			  'discord'  => $discord,
-			  'telegram'  => $telegram,
-			  'message' => $message,
-			  'recaptcha' => $recaptcha
-			 );
+				$file_open = fopen("airdrop.csv", "a") or die('fopen failed');
+				$no_rows = count(file("airdrop.csv"));
+				if($no_rows > 1)
+					{$no_rows = ($no_rows - 1) + 1;}
+					$form_data = array(
+			  		'sr_no'  => $no_rows,
+			  		'name'  => $name,
+			  		'email'  => $email,
+			  		'redstone_add'  => $redstone_add,
+			  		'github'  => $github,
+			  		'discord'  => $discord,
+			  		'telegram'  => $telegram,
+			  		'message' => $message,
+			  		'recaptcha' => $recaptcha);
 		   
 			 fputcsv($file_open, $form_data) or die('fputcsv failed;');
 			 fclose($file_open );
@@ -116,17 +84,12 @@ if(isset($_POST['submit']) && !empty($_POST['submit'])):
 			 $discord = '';
 			 $telegram = '';
 			 $message = '';
-			}
-
         else:
             $error  = '<p><label class="text-danger">Robot verification failed, please try again.</label></p>';
         endif;
     else:
         $error  = '<p><label class="text-danger">Please click on the reCAPTCHA box.</label></p>';
     endif;
-else:
-    $error  = '';
-endif;
 
 ?>
 <!DOCTYPE HTML>
@@ -138,7 +101,7 @@ endif;
 		<link rel="stylesheet" href="../assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-		<script src="https://www.google.com/recaptcha/api.js?render=<?php echo RECAPTCHA_SITE_KEY; ?>"></script>
+		<script src='https://www.google.com/recaptcha/api.js?render=6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP'></script>
 	</head>
 	<body class="is-preload">
 
