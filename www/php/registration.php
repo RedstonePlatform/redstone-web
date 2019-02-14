@@ -16,128 +16,118 @@ function clean_text($string)
  return $string;
 }
 
-//function validateRecaptcha() {
-
-if(empty($_POST["name"]))
- {
-  $error .= '<p><label class="text-danger">Please Enter your Name</label></p>';
- }
- else
- {
-  $name = clean_text($_POST["name"]);
-  if(!preg_match("/^[a-zA-Z ]*$/",$name))
-  {
-   $error .= '<p><label class="text-danger">Only letters and white space allowed</label></p>';
-  }
- }
- if(empty($_POST["email"]))
- {
-  $error .= '<p><label class="text-danger">Please Enter your Email</label></p>';
- }
- else
- {
-  $email = clean_text($_POST["email"]);
-  if(!filter_var($email, FILTER_VALIDATE_EMAIL))
-  {
-   $error .= '<p><label class="text-danger">Invalid email format</label></p>';
-  }
- }
- if(empty($_POST["redstone_add"]))
- {
-  $error .= '<p><label class="text-danger">Redstone Address is required</label></p>';
- }
- else
- {
-  $redstone_add = clean_text($_POST["redstone_add"]);
- }
-
- if(empty($_POST["github"]))
- {
-  $error .= '<p><label class="text-danger">Github ID is required</label></p>';
- }
- else
- {
-  $github = clean_text($_POST["github"]);
- }
-
- if(empty($_POST["discord"]))
- {
-  $error .= '<p><label class="text-danger">Discord ID is required</label></p>';
- }
- else
- {
-  $discord = clean_text($_POST["discord"]);
- }
-
- if(empty($_POST["telegram"]))
- {
-  $error .= '<p><label class="text-danger">Telegram ID is required</label></p>';
- }
- else
- {
-  $telegram = clean_text($_POST["telegram"]);
- }
- if(empty($_POST["token"]))
- {
-  $error .= '<p><label class="text-danger">Check Recaptcha</label></p>';
- }
- else
- {
-  $token =$_POST["token"];
- }
-
- if($error == '')
- {
- $action = $_POST['action'];
- $secret = '6LeI6pAUAAAAAMEL2oevzyX5HVQfh5c4Rs5zyBa3';
- 
-    if(!empty($token)){
-        $verifyURL = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secret) .  '&response=' . urlencode($token);
+if(isset($_POST['submit']) && !empty($_POST['submit'])):
+    if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])):
+        //your site secret key
+        $secret = '6LeI6pAUAAAAAMEL2oevzyX5HVQfh5c4Rs5zyBa3';
         //get verify response data
-        $verifyResponse = file_get_contents($verifyURL);
+        $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
         $responseData = json_decode($verifyResponse);
- 
-        if($responseData && $responseData->success && $responseData->action === $action) {
-            $recaptcha = $responseData->score;
-        }
- 
-        // maybe check error codes in responseData here and return them.
-    } else {
-        $recaptcha = "No Token";
-    }
-//}
+        if($responseData->success):
 
-//  $recaptcha = & validateRecaptcha();
-  $file_open = fopen("airdrop.csv", "a") or die('fopen failed');
-  $no_rows = count(file("airdrop.csv"));
-  if($no_rows > 1)
-  {
-   $no_rows = ($no_rows - 1) + 1;
-  }
-  $form_data = array(
-   'sr_no'  => $no_rows,
-   'name'  => $name,
-   'email'  => $email,
-   'redstone_add'  => $redstone_add,
-   'github'  => $github,
-   'discord'  => $discord,
-   'telegram'  => $telegram,
-   'message' => $message,
-   'recaptcha' => $recaptcha
-  );
+			if(empty($_POST["name"]))
+			{
+			 $error .= '<p><label class="text-danger">Please Enter your Name</label></p>';
+			}
+			else
+			{
+			 $name = clean_text($_POST["name"]);
+			 if(!preg_match("/^[a-zA-Z ]*$/",$name))
+			 {
+			  $error .= '<p><label class="text-danger">Only letters and white space allowed</label></p>';
+			 }
+			}
+			if(empty($_POST["email"]))
+			{
+			 $error .= '<p><label class="text-danger">Please Enter your Email</label></p>';
+			}
+			else
+			{
+			 $email = clean_text($_POST["email"]);
+			 if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+			 {
+			  $error .= '<p><label class="text-danger">Invalid email format</label></p>';
+			 }
+			}
+			if(empty($_POST["redstone_add"]))
+			{
+			 $error .= '<p><label class="text-danger">Redstone Address is required</label></p>';
+			}
+			else
+			{
+			 $redstone_add = clean_text($_POST["redstone_add"]);
+			}
+		   
+			if(empty($_POST["github"]))
+			{
+			 $error .= '<p><label class="text-danger">Github ID is required</label></p>';
+			}
+			else
+			{
+			 $github = clean_text($_POST["github"]);
+			}
+		   
+			if(empty($_POST["discord"]))
+			{
+			 $error .= '<p><label class="text-danger">Discord ID is required</label></p>';
+			}
+			else
+			{
+			 $discord = clean_text($_POST["discord"]);
+			}
+		   
+			if(empty($_POST["telegram"]))
+			{
+			 $error .= '<p><label class="text-danger">Telegram ID is required</label></p>';
+			}
+			else
+			{
+			 $telegram = clean_text($_POST["telegram"]);
+			}
 
-  fputcsv($file_open, $form_data) or die('fputcsv failed;');
-  fclose($file_open );
+			if($error == '')
 
-  $error = '<label class="text-success">Thank you for registering with Redstone</label>';
-  $name = '';
-  $email = '';
-  $redstone_add = '';
-  $github = '';
-  $discord = '';
-  $telegram = '';
-  $message = '';
- }
+			 $file_open = fopen("airdrop.csv", "a") or die('fopen failed');
+			 $no_rows = count(file("airdrop.csv"));
+			 if($no_rows > 1)
+			 {
+			  $no_rows = ($no_rows - 1) + 1;
+			 }
+			 $form_data = array(
+			  'sr_no'  => $no_rows,
+			  'name'  => $name,
+			  'email'  => $email,
+			  'redstone_add'  => $redstone_add,
+			  'github'  => $github,
+			  'discord'  => $discord,
+			  'telegram'  => $telegram,
+			  'message' => $message,
+			  'recaptcha' => $recaptcha
+			 );
+		   
+			 fputcsv($file_open, $form_data) or die('fputcsv failed;');
+			 fclose($file_open );
+		   
+			 $error = '<label class="text-success">Thank you for registering with Redstone</label>';
+			 $name = '';
+			 $email = '';
+			 $redstone_add = '';
+			 $github = '';
+			 $discord = '';
+			 $telegram = '';
+			 $message = '';
+			}
+
+        else:
+            $error  = '<p><label class="text-danger">Robot verification failed, please try again.</label></p>';
+        endif;
+    else:
+        $error  = '<p><label class="text-danger">Please click on the reCAPTCHA box.</label></p>';
+    endif;
+else:
+    $error  = '';
+endif;
+
 ?>
 <!DOCTYPE HTML>
 <html>
