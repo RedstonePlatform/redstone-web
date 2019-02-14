@@ -60,7 +60,7 @@ function clean_text($string)
 				{$telegram = clean_text($_POST["telegram"]);}
 
 			
-			$ip_add = clean_text($_SERVER['REMOTE_ADDR'])	
+			$ip_add = clean_text($_SERVER['REMOTE_ADDR']);	
 			if($error == '')
 				$file_open = fopen("airdrop.csv", "a") or die('fopen failed');
 				$no_rows = count(file("airdrop.csv"));
