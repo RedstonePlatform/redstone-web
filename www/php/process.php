@@ -77,8 +77,8 @@ function clean_text($string)
 		<title>Redstone Platform</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	</head>
 	<body class="is-preload">
@@ -103,6 +103,7 @@ function clean_text($string)
 								<li><a href="../gettingstarted.html">Download wallet</a></li>
 								<li><a href="../assets/Redstone_Whitepaper.pdf">Download Whitepaper</a></li>
 								<li><a href="http://test.blockexplorer.redstoneplatform.com/block-explorer">Block Explorer (Testnet)</a></li>
+								<li><a href="registration.html">Airdrop Registration</a></li>
 							</ul>
 							<a href="#" class="close">Close</a>
 						</div>
@@ -123,15 +124,14 @@ function clean_text($string)
 				<!-- Footer -->
 					<section id="footer">
 						<div class="inner">
-							<h2 class="major">Get in touch</h2>
-							<p>If you want to keep up to date with all things <strong>Redstone</strong> then enter your details below and we will add you to our mailing list or sign up for one of our social media channels</p>
-							<ul class="contact">
-								<li class="fa-github" style='font-size:20px'> <a href="https://github.com/redstoneplatform">https://github.com/redstoneplatform</a></li>
-								<li class="fa-telegram" style='font-size:20px'><a href="https://t.me/redstoneplatform">t.me/redstoneplatform</a></li>
-								<li class="fa-discord" style='font-size:20px'><a href="https://discord.gg/BCSX854">discord.gg/BCSX854</a></li>
-								<li class="fa-envelope" style='font-size:20px'><a href="mailto:admin@redstonecoin.com">admin@redstonecoin.com</a></li>
-								<li class="fa-twitter" style='font-size:20px'><a href="https://twitter.com/redstonecoin">twitter.com/redstonecoin</a></li>
-							</ul>
+							<div class="footer-social-icons">
+							<br><h2>Follow us on</h2>
+							<a href="https://github.com/redstoneplatform" class="social-icon"><i class="fab fa-github"></i></a>
+							<a href="https://t.me/redstoneplatform"" class="social-icon"><i class="fab fa-telegram"></i></a>
+							<a href="https://discord.gg/BCSX854" class="social-icon"><i class="fab fa-discord"></i></a>
+							<a href="https://twitter.com/redstonecoin" class="social-icon"><i class="fab fa-twitter"></i></a>
+							<a href="mailto:admin@redstonecoin.com" class="social-icon"><i class="fa fa-at"></i></a>
+							</div>
 							<ul class="copyright">
 								<li>&copy; Redstone Platform. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 							</ul>

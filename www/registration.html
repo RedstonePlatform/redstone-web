@@ -42,64 +42,70 @@
 								<li><a href="gettingstarted.html">Download wallet</a></li>
 								<li><a href="assets/Redstone_Whitepaper.pdf">Download Whitepaper</a></li>
 								<li><a href="http://test.blockexplorer.redstoneplatform.com/block-explorer">Block Explorer (Testnet)</a></li>
+								<li><a href="registration.html">Airdrop Registration</a></li>
 							</ul>
 							<a href="#" class="close">Close</a>
 						</div>
 					</nav>
-
-				<!-- Banner -->
-					<section id="banner">
+				<!-- Wrapper -->
+				<section id="wrapper">
+					<header>
 						<div class="inner">
 							<div class="logo"><span class="icon fa-diamond" style='font-size:48px;color:red'></span></div>
-							<h2>This is Redstone - Airdrop Registration</h2>
-							<p></p>
-					</div>
-					</section>
+							<h2>Redstone Airdrop Registration</h2>
+							<p>To register for the <strong>Redstone</strong> airdrop, please provide the following details.</p>
+						</div>
+					</header>
+
+					<!-- Content -->
+						<div class="wrapper">
+							<div class="inner">
+								<form method="post" action="/php/registration.php">
+									<div class="g-recaptcha" data-sitekey="6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP"></div>
+									<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+									<input type="hidden" name="action" value="validate_captcha">
+									<div class="fields">
+										<div class="field">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" required autofocus />
+										</div>
+										<div class="field">
+											<label for="email">Email</label>
+											<input type="email" name="email" id="email" required />
+										</div>
+										<div class="field">
+											<label for="redstone_add">Redstone Address</label>
+											<input type="text" name="redstone_add" id="redstone_add" required />
+										</div>
+										<div class="field">
+											<label for="github">Github Name</label>
+											<input type="text" name="github" id="github" required />
+										</div>
+										<div class="field">
+											<label for="discord">Redstone Discord Id</label>
+											<input type="text" name="discord" id="discord" required />
+										</div>
+										<div class="field">
+											<label for="telegram">Redstone Telegram Id</label>
+											<input type="text" name="telegram" id="telegram" required />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="4"></textarea>
+										</div>
+									</div>
+									<ul class="actions">				
+										<li><input type="submit" value="Register" /></li>
+									</ul>
+								</form>
+							</div>
+						</div>
+
+				</section>
 
 			<!-- Footer -->
 					<section id="footer">
 						<div class="inner">
-							<h2></h2>
-							<p>To register for the <strong>Redstone</strong> airdrop, please provide the following details.</p>
-							
-							<form method="post" action="/php/registration.php">
-								<div class="g-recaptcha" data-sitekey="6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP"></div>
-								<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
-								<input type="hidden" name="action" value="validate_captcha">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" required autofocus />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="email" name="email" id="email" required />
-									</div>
-									<div class="field">
-										<label for="redstone_add">Redstone Address</label>
-										<input type="text" name="redstone_add" id="redstone_add" required />
-									</div>
-									<div class="field">
-										<label for="github">Github Name</label>
-										<input type="text" name="github" id="github" required />
-									</div>
-									<div class="field">
-										<label for="discord">Redstone Discord Id</label>
-										<input type="text" name="discord" id="discord" required />
-									</div>
-									<div class="field">
-										<label for="telegram">Redstone Telegram Id</label>
-										<input type="text" name="telegram" id="telegram" required />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="4"></textarea>
-									</div>
-								</div>
-								<ul class="actions">				
-									<li><input type="submit" value="Register" /></li>
-								</ul>
-							</form>
 							<br>
 							<div class="footer-social-icons">
 							<br><h2>Follow us on</h2>

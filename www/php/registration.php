@@ -58,6 +58,9 @@ function clean_text($string)
 				{$error .= '<p><label class="text-danger">Telegram ID is required</label></p>';}
 			else
 				{$telegram = clean_text($_POST["telegram"]);}
+
+			
+			$ip_add = clean_text($_SERVER['REMOTE_ADDR'])	
 			if($error == '')
 				$file_open = fopen("airdrop.csv", "a") or die('fopen failed');
 				$no_rows = count(file("airdrop.csv"));
@@ -72,12 +75,13 @@ function clean_text($string)
 			  		'discord'  => $discord,
 			  		'telegram'  => $telegram,
 			  		'message' => $message,
+			  		'ip_add' => $ip_add,
 			  		'recaptcha_score' => $recaptcha_score);
 		   
 			 fputcsv($file_open, $form_data) or die('fputcsv failed;');
 			 fclose($file_open );
 		   
-			 $error = '<label class="text-success">Thank you for registering with Redstone</label>';
+			 $error = '<label class="text-success">Thank you for registering for the Redstone Airdrop!</label>';
 			 $name = '';
 			 $email = '';
 			 $redstone_add = '';
@@ -85,6 +89,8 @@ function clean_text($string)
 			 $discord = '';
 			 $telegram = '';
 			 $message = '';
+			 $ip_add ='' ;
+			 $recaptcha_score = '';
         else:
             $error  = '<p><label class="text-danger">Robot verification failed, please try again.</label></p>';
         endif;
@@ -99,8 +105,8 @@ function clean_text($string)
 		<title>Redstone Platform</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 		<script src='https://www.google.com/recaptcha/api.js?render=6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP'></script>
 	</head>
@@ -146,15 +152,14 @@ function clean_text($string)
 				<!-- Footer -->
 					<section id="footer">
 						<div class="inner">
-							<h2 class="major">Get in touch</h2>
-							<p>If you want to keep up to date with all things <strong>Redstone</strong> then enter your details below and we will add you to our mailing list or sign up for one of our social media channels</p>
-							<ul class="contact">
-								<li class="fa-github" style='font-size:20px'> <a href="https://github.com/redstoneplatform">https://github.com/redstoneplatform</a></li>
-								<li class="fa-telegram" style='font-size:20px'><a href="https://t.me/redstoneplatform">t.me/redstoneplatform</a></li>
-								<li class="fa-discord" style='font-size:20px'><a href="https://discord.gg/BCSX854">discord.gg/BCSX854</a></li>
-								<li class="fa-envelope" style='font-size:20px'><a href="mailto:admin@redstonecoin.com">admin@redstonecoin.com</a></li>
-								<li class="fa-twitter" style='font-size:20px'><a href="https://twitter.com/redstonecoin">twitter.com/redstonecoin</a></li>
-							</ul>
+							<div class="footer-social-icons">
+							<br><h2>Follow us on</h2>
+							<a href="https://github.com/redstoneplatform" class="social-icon"><i class="fab fa-github"></i></a>
+							<a href="https://t.me/redstoneplatform"" class="social-icon"><i class="fab fa-telegram"></i></a>
+							<a href="https://discord.gg/BCSX854" class="social-icon"><i class="fab fa-discord"></i></a>
+							<a href="https://twitter.com/redstonecoin" class="social-icon"><i class="fab fa-twitter"></i></a>
+							<a href="mailto:admin@redstonecoin.com" class="social-icon"><i class="fa fa-at"></i></a>
+							</div>
 							<ul class="copyright">
 								<li>&copy; Redstone Platform. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 							</ul>
