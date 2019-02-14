@@ -52,25 +52,6 @@
 						<div class="inner">
 							<h2>Airdrop Registration</h2>
 							<p>To register for the <strong>Redstone</strong> airdrop, please provide the following details.</p>
-							<script>
-								// when form is submit
-								$('form').submit(function() { 
-									// we stopped it
-									event.preventDefault();
-									// needs for recaptacha ready
-									grecaptcha.ready(function() {
-										// do request for recaptcha token
-										// response is promise with passed token
-										grecaptcha.execute('6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP', {action: 'Register'}).then(function(token) {
-											// add token to form
-											$('form').prepend('<input type="hidden" name="token" value="' + token + '">');
-											$('form').prepend('<input type="hidden" name="action" value="Register">');
-											// submit form now
-											$('form').unbind('submit').submit();
-										});;
-									});
-								});
-							</script>
 							
 							<form method="post" action="/php/registration.php">
 								<div class="fields">
@@ -103,6 +84,7 @@
 										<textarea name="message" id="message" rows="4"></textarea>
 									</div>
 								</div>
+								<div class="g-recaptcha" data-sitekey="6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP"></div>
 								<ul class="actions">				
 									<li><input type="submit" value="Register" /></li>
 								</ul>
