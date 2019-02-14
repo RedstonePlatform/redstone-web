@@ -21,7 +21,8 @@ function clean_text($string)
         $secret = '6LeI6pAUAAAAAMEL2oevzyX5HVQfh5c4Rs5zyBa3';
         //get verify response data
         $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
-        $responseData = json_decode($verifyResponse);
+		$responseData = json_decode($verifyResponse);
+		$recaptcha_score=$responseData->score;
         if($responseData->success):
 
 			if(empty($_POST["name"]))
@@ -71,7 +72,7 @@ function clean_text($string)
 			  		'discord'  => $discord,
 			  		'telegram'  => $telegram,
 			  		'message' => $message,
-			  		'recaptcha' => $recaptcha);
+			  		'recaptcha_score' => $recaptcha_score);
 		   
 			 fputcsv($file_open, $form_data) or die('fputcsv failed;');
 			 fclose($file_open );
