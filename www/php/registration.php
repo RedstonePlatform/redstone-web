@@ -16,7 +16,7 @@ function clean_text($string)
  return $string;
 }
 
-function validateRecaptcha() {
+//function validateRecaptcha() {
 
 if(empty($_POST["name"]))
  {
@@ -89,14 +89,14 @@ if(empty($_POST["name"]))
         $responseData = json_decode($verifyResponse);
  
         if($responseData && $responseData->success && $responseData->action === $action) {
-            return $responseData->score;
+            $recaptcha = $responseData->score;
         }
  
         // maybe check error codes in responseData here and return them.
     } else {
-        return "No Token";
+        $recaptcha = "No Token";
     }
-}
+//}
 
  if($error == '')
  {
