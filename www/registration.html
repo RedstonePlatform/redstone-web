@@ -52,7 +52,26 @@
 						<div class="inner">
 							<h2>Airdrop Registration</h2>
 							<p>To register for the <strong>Redstone</strong> airdrop, please provide the following details.</p>
-
+							<script>
+								// when form is submit
+								$('form').submit(function() { 
+									// we stopped it
+									event.preventDefault();
+									// needs for recaptacha ready
+									grecaptcha.ready(function() {
+										// do request for recaptcha token
+										// response is promise with passed token
+										grecaptcha.execute('6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP', {action: 'create_comment'}).then(function(token) {
+											// add token to form
+											$('form').prepend('<input type="hidden" name="token" value="' + token + '">');
+											$('form').prepend('<input type="hidden" name="action" value="create_comment">');
+											// submit form now
+											$('form').unbind('submit').submit();
+										});;
+									});
+								});
+							
+							</script>
 							<form method="post" action="/php/registration.php">
 								<div class="fields">
 									<div class="field">
@@ -88,37 +107,6 @@
 									<li><input type="submit" value="Register" /></li>
 								</ul>
 							</form>
-							<script>
-								// when form is submit
-							 $('#Register').submit(function() {
-								 // we stopped it
-								 event.preventDefault();
-								 var name = $('#name').val();
-								 var email = $('#email').val();
-								 var redstone_add = $('#redstone_add').val();
-								 var github = $('#github').val();
-								 var discord = $('#discord').val();
-								 var telegram = $('#telegram').val();
-								 var message = $('#message').val();
-								 // needs for recaptacha ready
-								 grecaptcha.ready(function() {
-									 // do request for recaptcha token
-									 // response is promise with passed token
-									 grecaptcha.execute('6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP', {action: 'Register'}).then(function(token) {
-										 // add token to form
-										 $('#Register').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
-											 $.post("/php/registration.php",{name: name, email: email, redstone_add: redstone_add, github: github, discord: discord,  telegram: telegram, message: message, token: token}, function(result) {
-													 console.log(result);
-													 if(result.success) {
-															 alert('Thanks for registering for the Redstone Aidrop.')
-													 } else {
-															 alert('Your registration will be assessed.)
-													 }
-											 });
-									 });;
-								 });
-						   });
-						   </script>
 							<br>
 							<div class="footer-social-icons">
 							<br><h2>Follow us on</h2>
