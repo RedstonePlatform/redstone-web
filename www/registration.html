@@ -8,7 +8,7 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<script src="https://www.google.com/recaptcha/api.js?render=6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP"></script>
+		<script src='https://www.google.com/recaptcha/api.js?render=6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP'></script>
 	</head>
 	<body class="is-preload">
 
@@ -61,16 +61,15 @@
 									grecaptcha.ready(function() {
 										// do request for recaptcha token
 										// response is promise with passed token
-										grecaptcha.execute('6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP', {action: 'create_comment'}).then(function(token) {
+										grecaptcha.execute('6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP', {action: 'Register'}).then(function(token) {
 											// add token to form
 											$('form').prepend('<input type="hidden" name="token" value="' + token + '">');
-											$('form').prepend('<input type="hidden" name="action" value="create_comment">');
+											$('form').prepend('<input type="hidden" name="action" value="Register">');
 											// submit form now
 											$('form').unbind('submit').submit();
 										});;
 									});
 								});
-							
 							</script>
 							<form method="post" action="/php/registration.php">
 								<div class="fields">
