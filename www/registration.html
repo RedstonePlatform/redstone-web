@@ -90,7 +90,7 @@
 							</form>
 							<script>
 								// when form is submit
-							 $('#register_form').submit(function() {
+							 $('#Register').submit(function() {
 								 // we stopped it
 								 event.preventDefault();
 								 var name = $('#name').val();
@@ -104,9 +104,9 @@
 								 grecaptcha.ready(function() {
 									 // do request for recaptcha token
 									 // response is promise with passed token
-									 grecaptcha.execute('6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP', {action: 'register'}).then(function(token) {
+									 grecaptcha.execute('6LeI6pAUAAAAAPdCgVajKzU4VoxQ3GLKg9A1gjlP', {action: 'Register'}).then(function(token) {
 										 // add token to form
-										 $('#register_form').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+										 $('#Register').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
 											 $.post("/php/registration.php",{name: name, email: email, redstone_add: redstone_add, github: github, discord: discord,  telegram: telegram, message: message, token: token}, function(result) {
 													 console.log(result);
 													 if(result.success) {

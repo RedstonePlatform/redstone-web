@@ -78,6 +78,8 @@ if(empty($_POST["name"]))
   $telegram = clean_text($_POST["telegram"]);
  }
 
+ if($error == '')
+ {
  $token=$_POST['token'];
  $action = $_POST['action'];
  $secret = '6LeI6pAUAAAAAMEL2oevzyX5HVQfh5c4Rs5zyBa3';
@@ -98,9 +100,7 @@ if(empty($_POST["name"]))
     }
 //}
 
- if($error == '')
- {
-  $recaptcha = & validateRecaptcha();
+//  $recaptcha = & validateRecaptcha();
   $file_open = fopen("airdrop.csv", "a") or die('fopen failed');
   $no_rows = count(file("airdrop.csv"));
   if($no_rows > 1)
