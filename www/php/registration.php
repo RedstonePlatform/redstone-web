@@ -6,7 +6,6 @@ $redstone_add = '';
 $github = '';
 $discord = '';
 $telegram = '';
-$message = '';
 
 function clean_text($string)
 {
@@ -74,7 +73,6 @@ function clean_text($string)
 			  		'github'  => $github,
 			  		'discord'  => $discord,
 			  		'telegram'  => $telegram,
-			  		'message' => $message,
 			  		'ip_add' => $ip_add,
 			  		'recaptcha_score' => $recaptcha_score);
 		   
@@ -88,16 +86,14 @@ function clean_text($string)
 			 $github = '';
 			 $discord = '';
 			 $telegram = '';
-			 $message = '';
 			 $ip_add ='' ;
 			 $recaptcha_score = '';
         else:
-            $error  = '<p><label class="text-danger">Robot verification failed, please try again.</label></p>';
+            $error  = '<p><a href="registration.html" class="special">Verification failed it looks like you are a bot, please retry!</a></p>';
         endif;
     else:
-        $error  = '<p><label class="text-danger">Please click on the reCAPTCHA box.</label></p>';
+        $error  = '<p><a href="registration.html" class="special">Please retry!</a></p>';
     endif;
-
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -158,7 +154,7 @@ function clean_text($string)
 							<a href="https://t.me/redstoneplatform"" class="social-icon"><i class="fab fa-telegram"></i></a>
 							<a href="https://discord.gg/BCSX854" class="social-icon"><i class="fab fa-discord"></i></a>
 							<a href="https://twitter.com/redstonecoin" class="social-icon"><i class="fab fa-twitter"></i></a>
-							<a href="mailto:admin@redstonecoin.com" class="social-icon"><i class="fa fa-at"></i></a>
+							<a href="mailto:admin@redstoneplatform.com" class="social-icon"><i class="fa fa-at"></i></a>
 							</div>
 							<ul class="copyright">
 								<li>&copy; Redstone Platform. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
