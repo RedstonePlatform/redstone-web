@@ -137,6 +137,7 @@ function clean_text($string)
 					<section id="banner">
 						<div class="inner">
 							<div class="logo"><span class="icon fa-diamond" style='font-size:48px;color:red'></span></div>
+							<h2>Redstone Airdrop Registration</h2>
 							<strong><?php echo $error; ?></strong>
 							<a href="../index.html" class="special">Home</a>
 					</div>
