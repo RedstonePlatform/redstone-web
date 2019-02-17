@@ -89,10 +89,10 @@ function clean_text($string)
 			 $ip_add ='' ;
 			 $recaptcha_score = '';
         else:
-            $error  = '<p><a href="registration.html" class="special">Verification failed it looks like you are a bot, please retry!</a></p>';
+            $error  = '<p>Verification failed it looks like you are a bot, please retry!</p>';
         endif;
     else:
-        $error  = '<p><a href="registration.html" class="special">Please retry!</a></p>';
+        $error  = '<p>Please retry!</a></p>';
     endif;
 ?>
 <!DOCTYPE HTML>
@@ -137,7 +137,7 @@ function clean_text($string)
 					<section id="banner">
 						<div class="inner">
 							<div class="logo"><span class="icon fa-diamond" style='font-size:48px;color:red'></span></div>
-							<h2><?php echo $error; ?></h2>
+							<strong><?php echo $error; ?></strong>
 							<a href="../index.html" class="special">Home</a>
 					</div>
 
