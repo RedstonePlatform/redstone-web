@@ -127,7 +127,8 @@ function clean_text($string)
 								<li><a href="../index.html">Home</a></li>
 								<li><a href="../gettingstarted.html">Download wallet</a></li>
 								<li><a href="../assets/Redstone_Whitepaper.pdf">Download Whitepaper</a></li>
-								<li><a href="http://test.blockexplorer.redstoneplatform.com/block-explorer">Block Explorer (Testnet)</a></li>
+								<li><a href="https://blockexplorer.redstoneplatform.com/block-explorer">Block Explorer</a></li>
+								<li><a href="../registration.html">Airdrop Registration</a></li>
 							</ul>
 							<a href="#" class="close">Close</a>
 						</div>
