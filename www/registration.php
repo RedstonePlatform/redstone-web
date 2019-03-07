@@ -64,7 +64,7 @@ require_once '/var/secure/keys.php';
 					<!-- Content -->
 						<div class="wrapper">
 							<div class="inner">
-								<form method="post" action="registration.php">
+								<form method="post" action="register.php">
 									<div class="g-recaptcha" data-sitekey="<?php echo $captcha_site_key; ?>"></div>
 									<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
 									<input type="hidden" name="action" value="validate_captcha">
