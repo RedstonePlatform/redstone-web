@@ -49,8 +49,8 @@ function clean_text($string)
 
  if($error == '')
  {
-  $file_open = fopen("contact_data.csv", "a") or die('fopen failed');;
-  $no_rows = count(file("contact_data.csv"));
+  $file_open = fopen("/data/contact.csv", "a") or die('fopen failed');;
+  $no_rows = count(file("/data/contact.csv"));
   if($no_rows > 1)
   {
    $no_rows = ($no_rows - 1) + 1;
@@ -99,11 +99,11 @@ function clean_text($string)
 						<div class="inner">
 							<h2>Menu</h2>
 							<ul class="links">
-								<li><a href="../index.html">Home</a></li>
-								<li><a href="../gettingstarted.html">Download wallet</a></li>
-								<li><a href="../assets/Redstone_Whitepaper.pdf">Download Whitepaper</a></li>
+								<li><a href="index.html">Home</a></li>
+								<li><a href="gettingstarted.html">Download wallet</a></li>
+								<li><a href="assets/Redstone_Whitepaper.pdf">Download Whitepaper</a></li>
 								<li><a href="https://blockexplorer.redstoneplatform.com/block-explorer">Block Explorer</a></li>
-								<li><a href="../registration.html">Airdrop Registration</a></li>
+								<li><a href="registration.php">Airdrop Registration</a></li>
 							</ul>
 							<a href="#" class="close">Close</a>
 						</div>
@@ -114,7 +114,7 @@ function clean_text($string)
 						<div class="inner">
 							<div class="logo"><span class="icon fa-diamond" style='font-size:48px;color:red'></span></div>
 							<h2><?php echo $error; ?></h2>
-							<a href="../index.html" class="special">Home</a>
+							<a href="index.html" class="special">Home</a>
 					</div>
 
 					</section>
@@ -141,12 +141,12 @@ function clean_text($string)
 			</div>
 
 		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/jquery.scrollex.min.js"></script>
-			<script src="../assets/js/browser.min.js"></script>
-			<script src="../assets/js/breakpoints.min.js"></script>
-			<script src="../assets/js/util.js"></script>
-			<script src="../assets/js/main.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 
 	</body>
 </html>
