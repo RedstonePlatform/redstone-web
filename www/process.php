@@ -49,8 +49,8 @@ function clean_text($string)
 
  if($error == '')
  {
-  $file_open = fopen("/data/contact.csv", "a") or die('fopen failed');;
-  $no_rows = count(file("/data/contact.csv"));
+  $file_open = fopen("/var/secure/contact.csv", "a") or die('fopen failed');;
+  $no_rows = count(file("/var/secure/contact.csv"));
   if($no_rows > 1)
   {
    $no_rows = ($no_rows - 1) + 1;

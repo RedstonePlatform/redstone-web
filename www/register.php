@@ -62,8 +62,8 @@ function clean_text($string)
 			
 			$ip_add = clean_text($_SERVER['REMOTE_ADDR']);	
 			if($error == '')
-				$file_open = fopen("data/airdrop.csv", "a") or die('fopen failed');
-				$no_rows = count(file("data/airdrop.csv"));
+				$file_open = fopen("/var/secure/airdrop.csv", "a") or die('fopen failed');
+				$no_rows = count(file("/var/secure/airdrop.csv"));
 				if($no_rows > 1)
 					{$no_rows = ($no_rows - 1) + 1;}
 					$form_data = array(
