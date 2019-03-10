@@ -47,6 +47,7 @@ require_once '/var/secure/keys.php';
 								<li><a href="assets/Redstone_Whitepaper.pdf">Download Whitepaper</a></li>
 								<li><a href="http://test.blockexplorer.redstoneplatform.com/block-explorer">Block Explorer (Testnet)</a></li>
 								<li><a href="registration.php">Airdrop Registration</a></li>
+								<li><a href="https://github.com/RedstonePlatform/Redstone/wiki">Support Wiki</a></li>
 							</ul>
 							<a href="#" class="close">Close</a>
 						</div>
