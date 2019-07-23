@@ -18,7 +18,7 @@ function clean_text($string)
 
     if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])):
         //your site secret key
-        $secret = $captcha_secret_key;
+        $secret = $red_captcha_secret_key;
         //get verify response data
         $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
 		$responseData = json_decode($verifyResponse);
@@ -105,7 +105,7 @@ function clean_text($string)
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-		<script src='https://www.google.com/recaptcha/api.js?render='<?php echo $captcha_site_key; ?>'></script>
+		<script src='https://www.google.com/recaptcha/api.js?render='<?php echo $red_captcha_site_key; ?>'></script>
 	</head>
 	<body class="is-preload">
 
